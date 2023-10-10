@@ -20,7 +20,7 @@ function Features() {
       <div className="feature-item">
         <img
           src={money}
-          alt="Chat Icon"
+          alt="money Icon"
           className="feature-icon"
         />
         <h3 className="feature-item-title">More savings means higher rates</h3>
@@ -31,7 +31,7 @@ function Features() {
       <div className="feature-item">
         <img
           src={security}
-          alt="Chat Icon"
+          alt="security Icon"
           className="feature-icon"
         />
         <h3 className="feature-item-title">Security you can trust</h3>

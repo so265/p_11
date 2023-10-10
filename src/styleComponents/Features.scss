@@ -12,11 +12,13 @@
     border: 10px solid #00bc77;
     border-radius: 50%;
     padding: 1rem;
+    margin: 0 auto;
   }
   
   .feature-item {
     flex: 1;
     padding: 2.5rem;
+    text-align: center; /*permet de centrer le cercle et le texte*/
   }
   
   .feature-item-title {
