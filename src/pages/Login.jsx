@@ -1,8 +1,12 @@
 import React from 'react'
+import Formulaire from '../components/Formulaire'
 
 function Login() {
   return (
-    <div>Login</div>
+    
+    <div>
+      <Formulaire />
+    </div>
   )
 }
 
