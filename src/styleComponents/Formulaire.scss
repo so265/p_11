@@ -15,8 +15,10 @@
   padding: 2rem;
 }
 
-.sign-in-icon {
-  font-size: 5rem;
+.sign-in-icon, h1 { //je centre au milieu
+  display: flex;           
+  align-items: center;     
+  justify-content: center;
 }
 
 .input-remember {
