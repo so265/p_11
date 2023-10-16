@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setUser, updateToken } from '../reducers/userReducer.jsx';
-import { loginToAPI } from '../api/authApi'; // Importez la fonction loginToAPI
+import { updateToken } from '../reducers/userReducer.jsx'; // voir s il faut utiliser setUser
+import { loginToAPI } from '../api/authApi'; // j'importe la fonction loginToAPI
 import '../styleComponents/Formulaire.scss';
-import { useNavigate } from 'react-router-dom'; // Importer useNavigate
+import { useNavigate } from 'react-router-dom'; // j'importe useNavigate
 
 function Formulaire() {
   // Je gère l'état local du formulaire
@@ -11,7 +11,7 @@ function Formulaire() {
 
   // J'obtiens une référence au dispatch Redux
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Obtenir la fonction de navigation
+  const navigate = useNavigate(); // pour obtenir la fonction de navigation
 
   // J'écris une fonction pour gérer la soumission du formulaire (connexion)
   const handleSignIn = async () => {
@@ -19,11 +19,10 @@ function Formulaire() {
       // J'effectue la requête d'authentification vers mon API en utilisant les données du formulaire (formData)
       const response = await loginToAPI(formData);
 
-      // Vérifiez que la réponse de l'API a un statut de 200 (OK) et que la propriété 'body' existe
+      // Vérifie que la réponse de l'API a un statut de 200 (OK) et que la propriété 'body' existe
       if (response.status === 200 && response.body) {
-        // Il n'y a pas de 'user' dans la réponse, alors nous n'en avons pas besoin ici
-
-        // J'extrait le token de la réponse
+       
+      // J'extrait le token de la réponse
         const { token } = response.body;
 
         // J'affiche le token dans la console
@@ -32,7 +31,7 @@ function Formulaire() {
         // J'appelle la fonction updateToken pour mettre à jour le token dans Redux
         dispatch(updateToken(token));
 
-        // Rediriger vers la page utilisateur après une connexion réussie
+        // Redirection vers la page utilisateur après une connexion réussie
         navigate('/user');
       } else {
         // Je gère les erreurs, par exemple, j'affiche un message d'erreur

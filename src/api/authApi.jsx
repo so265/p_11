@@ -1,9 +1,10 @@
-import axios from 'axios';
+// Permet à l'utilsateur de seconnecter au site
+import axios from 'axios';  //  bibliothèque Axios, utilisée pour effectuer des requêtes HTTP, des requêtes vers des API.
 
 // Fonction pour effectuer la requête d'authentification
 export async function loginToAPI(formData) {
   // Définition de l'URL de l'API
-  const apiUrl = 'http://localhost:3001/api/v1/user/login';
+  const apiUrl = 'http://localhost:3001/api/v1/user/login'; // C'est l'URL vers laquelle le code envoie la requête POST pour l'authentification.
 
   // Création des données de la requête
   const requestData = {
@@ -11,7 +12,7 @@ export async function loginToAPI(formData) {
     password: formData.password,
   };
 
-  // Définition des en-têtes de la requête
+  // Définition des en-têtes de la requête, configurés pour indiquer au serveur qu'une réponse au format JSON est attendue et que les données envoyées sont également au format JSON.
   const headers = {
     'accept': 'application/json',
     'Content-Type': 'application/json',

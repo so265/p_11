@@ -17,7 +17,7 @@ const userSlice = createSlice({
       // Je mets à jour d'autres attributs de l'utilisateur au besoin
     },
     updateToken: (state, action) => {
-      state.token = action.payload; 
+      state.token = action.payload; // le payload est la donnée envoyé avec l'action pour que le réducteur puisse l'utiliser pour effectuer des modifications appropriées dans l'état global de l'application.
     },   
   },
 });
