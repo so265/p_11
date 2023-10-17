@@ -1,21 +1,12 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logout } from '../reducers/authentificationReducer'; // Importez la fonction logout depuis le bon fichier
+import { useSelector } from 'react-redux'; // Importez useSelector pour accéder à l'état Redux
 import logo from '../assets/argentBankLogo.webp';
 import '../styleComponents/Header.scss';
 
-
-
 function Header() {
-  // Accès à l'état d'authentification depuis Redux
-  const isAuthenticated = useSelector((state) => state.auth.token !== null);
-  const dispatch = useDispatch();
-
-  // Fonction pour gérer la déconnexion
-  const handleSignOut = () => {
-    dispatch(logout()); // Appeler la fonction de déconnexion
-  };
+  // Utilisez useSelector pour accéder à l'état Redux
+  const isAuthenticated = useSelector(state => state.user.isAuthenticated);
 
   return (
     <div className="main-nav">
@@ -29,11 +20,7 @@ function Header() {
 
       <Link className="main-nav-item" to="/Login">
         <i className="fa fa-user-circle"></i>
-        {isAuthenticated ? (
-          <button onClick={handleSignOut}>Sign Out</button>
-        ) : (
-          'Sign In'
-        )}
+        {isAuthenticated ? 'Sign Out' : 'Sign In'}
       </Link>
     </div>
   );

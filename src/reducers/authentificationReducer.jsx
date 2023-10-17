@@ -1,7 +1,5 @@
 // authentificationReducer.jsx
 
-
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const authentificationSlice = createSlice({
