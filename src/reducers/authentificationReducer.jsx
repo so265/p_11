@@ -1,4 +1,7 @@
-// Je crée une action pour mettre à jour le token d'authentification
+// authentificationReducer.jsx
+
+
+
 import { createSlice } from '@reduxjs/toolkit';
 
 const authentificationSlice = createSlice({
@@ -8,11 +11,13 @@ const authentificationSlice = createSlice({
   },
   reducers: {
     updateToken: (state, action) => {
-      // L'action updateToken me permet de mettre à jour le token d'authentification
       state.token = action.payload;
+    },
+    logout: (state) => {
+      state.token = null;
     },
   },
 });
 
-export const { updateToken } = authentificationSlice.actions;
+export const { updateToken, logout } = authentificationSlice.actions;
 export default authentificationSlice.reducer;

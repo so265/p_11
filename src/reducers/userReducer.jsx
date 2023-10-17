@@ -7,7 +7,7 @@ const userSlice = createSlice({
     name: null,   // Je déclare mon attribut "name" avec une valeur initiale nulle
     email: null,  // J'initialise l'attribut "email" à null
     token: null,  // J'initialise également l'attribut "token" à null
-    // J'ajoute d'autres attributs d'utilisateur ici avec des valeurs initiales nulles
+    isAuthenticated: false, // Nouvelle propriété pour suivre l'état de connexion
   },
   reducers: {
     setUser: (state, action) => {
@@ -18,6 +18,7 @@ const userSlice = createSlice({
     },
     updateToken: (state, action) => {
       state.token = action.payload; // le payload est la donnée envoyé avec l'action pour que le réducteur puisse l'utiliser pour effectuer des modifications appropriées dans l'état global de l'application.
+      state.isAuthenticated = !!action.payload; // Mise à jour de l'état de connexion
     },   
   },
 });

@@ -66,6 +66,7 @@ function Formulaire() {
               id="password"
               value={formData.password}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              autoComplete="current-password"
             />
           </div>
           <div className="input-remember">
