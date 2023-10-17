@@ -1,4 +1,4 @@
-// Gère l'état global de l'utilisateur
+// Gère l'état global de l'utilisateur, garanti la cohérence des données utilisateur dans toute l'application
 
 import { createSlice } from '@reduxjs/toolkit';
 
