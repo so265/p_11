@@ -1,3 +1,5 @@
+// Gère l'état global de l'utilisateur
+
 import { createSlice } from '@reduxjs/toolkit';
 
 // Je crée un slice pour gérer les données de l'utilisateur
