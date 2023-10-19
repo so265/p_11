@@ -1,11 +1,11 @@
-// authentificationReducer.jsx
+// authentificationReducer.jsx, s'occupe uniquement de la gestion des tokens.
 
 import { createSlice } from '@reduxjs/toolkit';
 
 const authentificationSlice = createSlice({
-  name: 'auth',
+  name: 'auth', // Mon slice s'appelle "auth"
   initialState: {
-    token: null,
+    token: null, // J'initialise l'attribut "token" à null
   },
   reducers: {
     updateToken: (state, action) => {

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateToken } from '../reducers/userReducer.jsx'; // voir s il faut utiliser setUser
-import { loginToAPI } from '../api/authApi'; // j'importe la fonction loginToAPI
+import { updateToken } from '../reducers/authentificationReducer.jsx';
+import { setAuthenticated } from '../reducers/userReducer.jsx'; // Import de l'action setAuthenticated
+import { loginToAPI } from '../api/authApi'; 
 import '../styleComponents/Formulaire.scss';
-import { useNavigate } from 'react-router-dom'; // j'importe useNavigate
+import { useNavigate } from 'react-router-dom'; 
 
 function Formulaire() {
   // Je gère l'état local du formulaire
@@ -11,7 +12,7 @@ function Formulaire() {
 
   // J'obtiens une référence au dispatch Redux
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // pour obtenir la fonction de navigation
+  const navigate = useNavigate(); 
 
   // J'écris une fonction pour gérer la soumission du formulaire (connexion)
   const handleSignIn = async () => {
@@ -21,8 +22,7 @@ function Formulaire() {
 
       // Vérifie que la réponse de l'API a un statut de 200 (OK) et que la propriété 'body' existe
       if (response.status === 200 && response.body) {
-       
-      // J'extrait le token de la réponse
+        // J'extrait le token de la réponse
         const { token } = response.body;
 
         // J'affiche le token dans la console
@@ -30,6 +30,9 @@ function Formulaire() {
 
         // J'appelle la fonction updateToken pour mettre à jour le token dans Redux
         dispatch(updateToken(token));
+
+        // Met à jour l'état d'authentification à vrai après une connexion réussie
+        dispatch(setAuthenticated(true));  // Nouvelle ligne
 
         // Redirection vers la page utilisateur après une connexion réussie
         navigate('/user');
@@ -56,7 +59,7 @@ function Formulaire() {
               id="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              autoComplete="new-password" // Ceci pour spécifier l'autocomplétion pour le mot de passe
+              autoComplete="new-password"
             />
           </div>
           <div className="input-wrapper">

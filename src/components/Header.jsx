@@ -1,19 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'; // Importez useSelector pour accéder à l'état Redux
+import { useSelector, useDispatch } from 'react-redux'; // Importe useSelector pour accéder à l'état Redux
 import logo from '../assets/argentBankLogo.webp';
-import { updateToken } from '../reducers/userReducer.jsx'; 
+import { logout } from '../reducers/authentificationReducer.jsx'; 
+import { setAuthenticated } from '../reducers/userReducer.jsx'; // Import de l'action setAuthenticated
 
 import '../styleComponents/Header.scss';
 
 function Header() {
-  // Utilisez useSelector pour accéder à l'état Redux
+  // Utilise useSelector pour accéder à l'état Redux
   const isAuthenticated = useSelector(state => state.user.isAuthenticated);
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
-    // Déclenchez l'action Redux pour mettre à jour l'état d'authentification
-    dispatch(updateToken(false));
+    // Déclenche l'action Redux pour mettre à jour l'état d'authentification
+    dispatch(logout()); 
+    dispatch(setAuthenticated(false));  // Met à jour l'état d'authentification à faux lors de la déconnexion
   };
 
   return (
@@ -26,7 +28,7 @@ function Header() {
         />
       </Link>
 
-      <Link className="main-nav-item" to="/Login" onClick={handleSignOut}>
+      <Link className="main-nav-item" to="/Login" onClick={isAuthenticated ? handleSignOut : null}>
         <i className="fa fa-user-circle"></i>
         {isAuthenticated ? 'Sign Out' : 'Sign In'}
       </Link>

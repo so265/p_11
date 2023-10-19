@@ -1,4 +1,4 @@
-// Gère l'état global de l'utilisateur, garanti la cohérence des données utilisateur dans toute l'application
+// Gère les informations de l'utilisateur, garanti la cohérence des données utilisateur dans toute l'application
 
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -8,8 +8,7 @@ const userSlice = createSlice({
   initialState: {
     name: null,   // Je déclare mon attribut "name" avec une valeur initiale nulle
     email: null,  // J'initialise l'attribut "email" à null
-    token: null,  // J'initialise également l'attribut "token" à null
-    isAuthenticated: false, // Nouvelle propriété pour suivre l'état de connexion
+    isAuthenticated: false, // propriété pour suivre l'état de connexion
   },
   reducers: {
     setUser: (state, action) => {
@@ -21,13 +20,9 @@ const userSlice = createSlice({
     setAuthenticated: (state, action) => {
       state.isAuthenticated = action.payload;
     },
-    updateToken: (state, action) => {
-      state.token = action.payload; // le payload est la donnée envoyé avec l'action pour que le réducteur puisse l'utiliser pour effectuer des modifications appropriées dans l'état global de l'application.
-      state.isAuthenticated = !!action.payload; // Mise à jour de l'état de connexion
-    },   
-  },
+    },
 });
 
-export const { setUser, updateToken } = userSlice.actions;
+export const { setUser, setAuthenticated } = userSlice.actions;
 export default userSlice.reducer;
 
