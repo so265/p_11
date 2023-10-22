@@ -1,5 +1,4 @@
-//header.jsx
-
+// Header.jsx
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -11,16 +10,15 @@ import { setAuthenticated } from '../reducers/userReducer.jsx';
 import '../styleComponents/Header.scss';
 
 function Header() {
+  // J'utilise useSelector pour extraire l'état isAuthenticated et le nom de l'utilisateur depuis le store Redux.
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const userName = useSelector((state) => state.user.name);
   const dispatch = useDispatch();
 
-  console.log('isAuthenticated:', isAuthenticated); // Ajout de ces logs pour le débogage
-  console.log('userName:', userName); // Ajout de ces logs pour le débogage
-
+// Fonction pour gérer la déconnexion de l'utilisateur.
   const handleSignOut = () => {
-    dispatch(logout());
-    dispatch(setAuthenticated(false));
+    dispatch(logout());   // J'appelle l'action logout pour vider le token d'authentification.
+    dispatch(setAuthenticated(false)); // // J'appelle l'action setAuthenticated pour définir l'authentification comme "false".
   };
 
   return (
@@ -39,7 +37,7 @@ function Header() {
         onClick={isAuthenticated ? handleSignOut : null}
       >
         <i className="fa fa-user-circle"></i>
-        {isAuthenticated ? `Bonjour, ${userName}` : 'Sign In'}
+        {isAuthenticated ? `${userName.split(' ')[0]}` : 'Sign In'}
         {isAuthenticated && (
           <span onClick={handleSignOut} className="signout-link">
             Sign Out

@@ -37,7 +37,7 @@ export async function loginToAPI(formData) {
       return responseData;
 
   } catch (error) {
-      // En cas d'erreur, propager l'erreur pour une gestion ultérieure
+      // En cas d'erreur, propage l'erreur pour une gestion ultérieure
       console.error('There was a problem with the fetch operation:', error.message);
       throw error;
   }

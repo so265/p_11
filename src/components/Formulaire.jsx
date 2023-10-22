@@ -1,7 +1,5 @@
 // Formulaire.jsx
 
-// Formulaire.jsx
-
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateToken } from '../reducers/authentificationReducer.jsx';
@@ -17,30 +15,34 @@ function Formulaire() {
   const dispatch = useDispatch();
   const navigate = useNavigate(); 
 
+  // Fonction pour gérer la soumission du formulaire de connexion.
   const handleSignIn = async () => {
     try {
       const response = await loginToAPI(formData);
 
+       // Vérifie la réponse de l'API.
       if (response.status === 200 && response.body) {
         const { token } = response.body;
         console.log('Token from API:', token);
 
+        // Mise à jour du token dans le store Redux.
         dispatch(updateToken(token));
 
-        // Fetch user profile data
+        // Récupère les données de profil de l'utilisateur depuis l'API
         const userProfileData = await dispatch(fetchUserProfile(token));
 
         console.log('User profile data:', userProfileData);
 
+        // Vérifie si les données de profil sont valides
         if (userProfileData && userProfileData.body) {
           const { firstName, lastName, email } = userProfileData.body;
-          const userName = `${firstName} ${lastName}`;
+          const userName = `${firstName} ${lastName}`;  // Créeation du nom complet de l'utilisateur.
           
-          dispatch(setUser({ name: userName, email }));
+          dispatch(setUser({ name: userName, email })); // Mise à jour des données de l'utilisateur dans le store Redux.
         }
 
-        dispatch(setAuthenticated(true));
-        navigate('/user');
+        dispatch(setAuthenticated(true));  // Définit l'authentification comme réussie dans le store Redux.
+        navigate('/user'); // Redirige l'utilisateur vers la page "/user".
       } else {
         console.error('Invalid API response or undefined user.');
       }
