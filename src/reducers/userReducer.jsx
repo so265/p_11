@@ -2,8 +2,6 @@
 
 // userReducer.jsx
 
-// userReducer.jsx
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const userSlice = createSlice({
@@ -26,5 +24,4 @@ const userSlice = createSlice({
 
 export const { setUser, setAuthenticated } = userSlice.actions;
 export default userSlice.reducer;
-
 

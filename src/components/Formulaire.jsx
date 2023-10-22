@@ -32,8 +32,11 @@ function Formulaire() {
 
         console.log('User profile data:', userProfileData);
 
-        if (userProfileData) {
-          dispatch(setUser(userProfileData));
+        if (userProfileData && userProfileData.body) {
+          const { firstName, lastName, email } = userProfileData.body;
+          const userName = `${firstName} ${lastName}`;
+          
+          dispatch(setUser({ name: userName, email }));
         }
 
         dispatch(setAuthenticated(true));
@@ -44,7 +47,7 @@ function Formulaire() {
     } catch (error) {
       console.error('Error during sign-in:', error);
     }
-  };
+  }
 
   return (
     <main className="main-bg-dark">
