@@ -10,6 +10,7 @@ import '../styleComponents/Header.scss';
 function Header() {
   // Utilise useSelector pour accéder à l'état Redux
   const isAuthenticated = useSelector(state => state.user.isAuthenticated);
+  const userName = useSelector(state => state.user.name); // Ajoutez ceci pour obtenir le prénom de l'utilisateur
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
@@ -30,7 +31,7 @@ function Header() {
 
       <Link className="main-nav-item" to="/Login" onClick={isAuthenticated ? handleSignOut : null}>
         <i className="fa fa-user-circle"></i>
-        {isAuthenticated ? 'Sign Out' : 'Sign In'}
+        {isAuthenticated ? `Bonjour, ${userName}` : 'Sign In'}
       </Link>
     </div>
   );

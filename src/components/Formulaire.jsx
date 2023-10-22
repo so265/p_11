@@ -1,48 +1,48 @@
+// Formulaire.jsx
+
+// Formulaire.jsx
+
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateToken } from '../reducers/authentificationReducer.jsx';
-import { setAuthenticated } from '../reducers/userReducer.jsx'; // Import de l'action setAuthenticated
+import { setAuthenticated, setUser } from '../reducers/userReducer.jsx'; // Import de l'action setUser
 import { loginToAPI } from '../api/authApi'; 
+import { fetchUserProfile } from '../action/userAction';
+
 import '../styleComponents/Formulaire.scss';
 import { useNavigate } from 'react-router-dom'; 
 
 function Formulaire() {
-  // Je gère l'état local du formulaire
   const [formData, setFormData] = useState({ email: '', password: '' });
-
-  // J'obtiens une référence au dispatch Redux
   const dispatch = useDispatch();
   const navigate = useNavigate(); 
 
-  // J'écris une fonction pour gérer la soumission du formulaire (connexion)
   const handleSignIn = async () => {
     try {
-      // J'effectue la requête d'authentification vers mon API en utilisant les données du formulaire (formData)
       const response = await loginToAPI(formData);
 
-      // Vérifie que la réponse de l'API a un statut de 200 (OK) et que la propriété 'body' existe
       if (response.status === 200 && response.body) {
-        // J'extrait le token de la réponse
         const { token } = response.body;
+        console.log('Token from API:', token);
 
-        // J'affiche le token dans la console
-        console.log('Réponse de l\'API (token) :', token);
-
-        // J'appelle la fonction updateToken pour mettre à jour le token dans Redux
         dispatch(updateToken(token));
 
-        // Met à jour l'état d'authentification à vrai après une connexion réussie
-        dispatch(setAuthenticated(true));  // Nouvelle ligne
+        // Fetch user profile data
+        const userProfileData = await dispatch(fetchUserProfile(token));
 
-        // Redirection vers la page utilisateur après une connexion réussie
+        console.log('User profile data:', userProfileData);
+
+        if (userProfileData) {
+          dispatch(setUser(userProfileData));
+        }
+
+        dispatch(setAuthenticated(true));
         navigate('/user');
       } else {
-        // Je gère les erreurs, par exemple, j'affiche un message d'erreur
-        console.error('Réponse de l\'API invalide ou utilisateur non défini.');
+        console.error('Invalid API response or undefined user.');
       }
     } catch (error) {
-      // Je gère les erreurs, par exemple, j'affiche un message d'erreur
-      console.error('Erreur de connexion :', error);
+      console.error('Error during sign-in:', error);
     }
   };
 
