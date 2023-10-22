@@ -37,9 +37,10 @@ function Header() {
         onClick={isAuthenticated ? handleSignOut : null}
       >
         <i className="fa fa-user-circle"></i>
-        {isAuthenticated ? `${userName.split(' ')[0]}` : 'Sign In'}
+        <span className='username-text-left'>{isAuthenticated ? `${userName.split(' ')[0]}` : 'Sign In'}</span>
         {isAuthenticated && (
           <span onClick={handleSignOut} className="signout-link">
+            <i className="fa fa-sign-out"></i>
             Sign Out
           </span>
         )}
