@@ -34,11 +34,12 @@ return (
                   <Link className="main-nav-item user-container" to="/user">
                       <i className="fa fa-user-circle"></i>
                       <span className='username-text-left'>{userName}</span>
-                  </Link>
+                  </Link >
+                <Link to="/">
                   <span onClick={handleSignOut} className="main-nav-item signout-link">
                       <i className="fa fa-sign-out"></i>
                       Sign Out
-                  </span>
+                  </span></Link >
               </>
           ) : (
               <Link className="main-nav-item" to="/login">
