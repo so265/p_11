@@ -21,32 +21,34 @@ function Header() {
     dispatch(setAuthenticated(false)); // // J'appelle l'action setAuthenticated pour définir l'authentification comme "false".
   };
 
-  return (
-    <div className="main-nav">
+  
+return (
+  <div className="main-nav">
       <Link to="/">
-        <img
-          className="main-nav-logo-image"
-          src={logo}
-          alt="Argent Bank Logo"
-        />
+          <img className="main-nav-logo-image" src={logo} alt="Argent Bank Logo" />
       </Link>
 
-      <Link
-        className="main-nav-item"
-        to="/Login"
-        onClick={isAuthenticated ? handleSignOut : null}
-      >
-        <i className="fa fa-user-circle"></i>
-        <span className='username-text-left'>{isAuthenticated ? `${userName}` : 'Sign In'}</span>
-        {isAuthenticated && (
-          <span onClick={handleSignOut} className="signout-link">
-            <i className="fa fa-sign-out"></i>
-            Sign Out
-          </span>
-        )}
-      </Link>
-    </div>
-  );
+      <div className="user-controls">
+          {isAuthenticated ? (
+              <>
+                  <Link className="main-nav-item user-container" to="/user">
+                      <i className="fa fa-user-circle"></i>
+                      <span className='username-text-left'>{userName}</span>
+                  </Link>
+                  <span onClick={handleSignOut} className="main-nav-item signout-link">
+                      <i className="fa fa-sign-out"></i>
+                      Sign Out
+                  </span>
+              </>
+          ) : (
+              <Link className="main-nav-item" to="/login">
+                  <i className="fa fa-user-circle"></i>
+                  Sign In
+              </Link>
+          )}
+      </div>
+  </div>
+);
 }
 
 export default Header;
