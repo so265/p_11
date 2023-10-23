@@ -35,11 +35,11 @@ return (
                       <i className="fa fa-user-circle"></i>
                       <span className='username-text-left'>{userName}</span>
                   </Link >
-                <Link to="/">
-                  <span onClick={handleSignOut} className="main-nav-item signout-link">
+                <Link to="/" onClick={handleSignOut} className="main-nav-item signout-link">
+                  
                       <i className="fa fa-sign-out"></i>
-                      Sign Out
-                  </span></Link >
+                      <span className='signout-text'> Sign Out </span>
+                  </Link >
               </>
           ) : (
               <Link className="main-nav-item" to="/login">
