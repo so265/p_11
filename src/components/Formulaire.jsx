@@ -62,7 +62,7 @@ function Formulaire() {
         <h1>Sign In</h1>
 
         {/* Affiche le message d'erreur si présent */}
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>} 
         
         <form>
           <div className="input-wrapper">
