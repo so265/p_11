@@ -24,6 +24,7 @@ export const fetchUserProfile = (token) => async (dispatch) => {
     if (data && data.status === 200 && data.body) { // Je érifie si les données de profil sont valides.
       const userData = {  // Création d'un objet userData contenant le nom complet et l'email de l'utilisateur.
         name: data.body.firstName + ' ' + data.body.lastName,
+        userName: data.body.userName,
         email: data.body.email,
       };
 

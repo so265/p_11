@@ -8,12 +8,14 @@ const userSlice = createSlice({
   name: 'user',
   initialState: {
     name: null,
+    userName: null,
     email: null,
     isAuthenticated: false,
   },
   reducers: {
     setUser: (state, action) => {
       state.name = action.payload.name;
+      state.userName = action.payload.userName;
       state.email = action.payload.email;
     },
     setAuthenticated: (state, action) => {

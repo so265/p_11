@@ -12,7 +12,7 @@ import '../styleComponents/Header.scss';
 function Header() {
   // J'utilise useSelector pour extraire l'état isAuthenticated et le nom de l'utilisateur depuis le store Redux.
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
-  const userName = useSelector((state) => state.user.name);
+  const userName = useSelector((state) => state.user.userName);
   const dispatch = useDispatch();
 
 // Fonction pour gérer la déconnexion de l'utilisateur.
@@ -37,7 +37,7 @@ function Header() {
         onClick={isAuthenticated ? handleSignOut : null}
       >
         <i className="fa fa-user-circle"></i>
-        <span className='username-text-left'>{isAuthenticated ? `${userName.split(' ')[0]}` : 'Sign In'}</span>
+        <span className='username-text-left'>{isAuthenticated ? `${userName}` : 'Sign In'}</span>
         {isAuthenticated && (
           <span onClick={handleSignOut} className="signout-link">
             <i className="fa fa-sign-out"></i>
