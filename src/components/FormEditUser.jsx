@@ -1,7 +1,9 @@
 // FormEditUser.jsx
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUserProfile } from '../action/userAction.jsx';
+import "../styleComponents/FormEditUser.scss"; 
 
 function FormEditUser() {
   const user = useSelector(state => state.user);
@@ -10,17 +12,10 @@ function FormEditUser() {
   const [lastName] = useState(user.lastName);
   const dispatch = useDispatch();
 
-  // Récupérer le token depuis le Redux Store
-  const token = useSelector(state => state.token);
-
-  // Utilisez useEffect pour afficher le token lorsque le composant est monté
-  useEffect(() => {
-    console.log('Token from Redux Store:', token);
-  }, [token]);
+  const token = useSelector(state => state.auth.token); // Récupére le token depuis le store Redux
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Utilisez le token dans la soumission du formulaire
     dispatch(updateUserProfile({ userName }, token));
   };
 
