@@ -17,6 +17,7 @@ function WelcomeBack() {
   return (
     <div>
      <main className="main bg-dark">
+     {!showEditForm && (
           <div className="header">
             <h1 className='title'>Welcome back<br />{`${user.firstName} ${user.lastName}`}!</h1>
             {/* Je lie la fonction toggleEditForm au bouton "Edit Name" pour afficher ou cacher le formulaire */}
@@ -24,7 +25,7 @@ function WelcomeBack() {
               Edit Name
             </button>
           </div>
-          
+          )}
           {/* Si showEditForm est vrai, j'affiche le formulaire FormEditUser */}
           {showEditForm && <FormEditUser />} 
 
