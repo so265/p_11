@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import "../styleComponents/WelcomeBack.scss"; 
 import { useSelector } from 'react-redux';
-import FormEditUser from './FormEditUser'; // Je m'assure que le chemin d'importation est correct
-
+import FormEditUser from './FormEditUser'; 
 function WelcomeBack() {
   // J'utilise useSelector pour obtenir les informations de l'utilisateur à partir du store Redux
   const user = useSelector(state => state.user);
@@ -29,7 +28,6 @@ function WelcomeBack() {
           {/* Si showEditForm est vrai, j'affiche le formulaire FormEditUser */}
           {showEditForm && <FormEditUser />} 
 
-          {/* ... Reste du composant ... */}
           <h2 className="sr-only">Accounts</h2>
           <section className="account">
             <div className="account-content-wrapper">
