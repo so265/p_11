@@ -7,9 +7,7 @@ const API_ENDPOINT = 'http://localhost:3001/api/v1/user/profile';
 // Fonction asynchrone pour récupérer le profil de l'utilisateur depuis l'API.
 export const fetchUserProfile = (token) => async (dispatch) => {
   try {
-    console.log('Début de fetchUserProfile avec le token:', token);
-
-    if (!token) {
+   if (!token) {
       const errorMsg = 'Token absent lors de la récupération du profil.';
       console.error(errorMsg);
       throw new Error(errorMsg);
@@ -24,8 +22,7 @@ export const fetchUserProfile = (token) => async (dispatch) => {
     });
 
     const data = await response.json();
-    console.log('Réponse de fetchUserProfile:', data);
-
+    
     if (!response.ok) {
       throw new Error(data.message || `HTTP error! Status: ${response.status}`);
     }
@@ -53,8 +50,6 @@ export const fetchUserProfile = (token) => async (dispatch) => {
 // Ajout de la nouvelle fonction updateUserProfile
 export const updateUserProfile = (userData, token) => async (dispatch) => {
   try {
-    console.log('Début de updateUserProfile avec les données et le token:', userData, token);
-
     if (!token) {
       const errorMsg = 'Token absent lors de la mise à jour du profil.';
       console.error(errorMsg);
@@ -71,8 +66,6 @@ export const updateUserProfile = (userData, token) => async (dispatch) => {
     });
 
     const data = await response.json();
-    console.log('Réponse de updateUserProfile:', data);
-
     if (!response.ok) {
       throw new Error(data.message || `HTTP error! Status: ${response.status}`);
     }
