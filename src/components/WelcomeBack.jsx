@@ -27,7 +27,7 @@ function WelcomeBack() {
           </div>
           )}
           {/* Si showEditForm est vrai, j'affiche le formulaire FormEditUser */}
-          {showEditForm && <FormEditUser />} 
+          {showEditForm && <FormEditUser toggleEditForm={toggleEditForm} />} {/*Je passe la fonction toggleEditForm en tant que props */}
 
           <h2 className="sr-only">Accounts</h2>
           <section className="account">

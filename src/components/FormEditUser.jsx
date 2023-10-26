@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateUserProfile } from '../action/userAction.jsx';
 import "../styleComponents/FormEditUser.scss"; 
 
-function FormEditUser() {
+function FormEditUser({ toggleEditForm }) { // je recupere ce props toggleEditForm du composant welcomeBack
   const user = useSelector(state => state.user);
   const [userName, setUserName] = useState(user.userName);
   const [firstName] = useState(user.firstName);
@@ -20,11 +20,12 @@ function FormEditUser() {
     e.preventDefault();
     try {
       await dispatch(updateUserProfile({ userName }, token));
-      setSuccessMessage('User information updated successfully!');
+      setSuccessMessage("User information updated successfully!");
       setErrorMessage(null); // Efface le message d'erreur en cas de succès
+      toggleEditForm(); // Je cache le formulaire apres une mise a jour reussie 
     } catch (error) {
       setSuccessMessage(null); // Efface le message de succès en cas d'erreur
-      setErrorMessage('Erreur lors de la mise à jour des informations de l/utilisateur. Veuillez réessayer.'); // Défini le message d'erreur
+      setErrorMessage("Erreur lors de la mise à jour des informations de l'utilisateur. Veuillez réessayer."); // Défini le message d'erreur
     }
   };
 
@@ -32,10 +33,10 @@ function FormEditUser() {
     setUserName(user.userName);
     setSuccessMessage(null);
     setErrorMessage(null);
+    toggleEditForm(); // Je cache le formulaire apres une annulation reussie au click sur cancel,appel changela valeur de showEditForm dans le composant parent WelcomeBack, affiche le message "Welcome back".
   };
   
-
-  return (
+ return (
     <div className="container">
       <div className="header">
         <h1>Edit user info</h1>
