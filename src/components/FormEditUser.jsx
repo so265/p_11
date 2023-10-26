@@ -28,6 +28,13 @@ function FormEditUser() {
     }
   };
 
+  const handleCancel = () => {
+    setUserName(user.userName);
+    setSuccessMessage(null);
+    setErrorMessage(null);
+  };
+  
+
   return (
     <div className="container">
       <div className="header">
@@ -67,12 +74,13 @@ function FormEditUser() {
           </div>
 
           <div className="buttons">
-            <button type="submit" className="save">
+            <button type="submit" className="save"> {/*submit bouton pour soumettre le formulaire*/}
               Save
             </button>
-            <button type="button" className="cancel">
-              Cancel
-            </button>
+            <button type="button" className="cancel" onClick={handleCancel}>
+            Cancel
+           </button>
+
           </div>
         </form>
       </div>
