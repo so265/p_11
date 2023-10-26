@@ -13,20 +13,12 @@ html {
     min-height: 100vh;
   }
   
-  .main {
-    padding-top: 10px;
-  }
-  
-  .bg-dark {
+ .bg-dark {
     background-color: #12002b;
     padding-bottom: 85px;
   }
 
-  .title {
-    padding-top: 15px;
-  }
-  
-  .sr-only {
+ .sr-only {
     border: 0 !important;
     clip: rect(1px, 1px, 1px, 1px) !important;
     -webkit-clip-path: inset(50%) !important;
@@ -84,6 +76,7 @@ html {
     font-weight: bold;
     padding: 10px;
     cursor: pointer;
+    margin-top: 15px;
   }
  
   .header {
