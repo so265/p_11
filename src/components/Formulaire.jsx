@@ -26,9 +26,8 @@ function Formulaire() {
       // Vérifie la réponse de l'API.
       if (response.status === 200 && response.body) {
         const { token } = response.body;
-        console.log('Token from API:', token);
-
-        // Mise à jour du token dans le store Redux.
+        
+      // Mise à jour du token dans le store Redux.
         dispatch(updateToken(token));
 
         // Récupère les données de profil de l'utilisateur depuis l'API
