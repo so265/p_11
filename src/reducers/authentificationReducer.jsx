@@ -9,10 +9,10 @@ const authentificationSlice = createSlice({
   },
   reducers: {
     updateToken: (state, action) => {
-      state.token = action.payload;
+      state.token = action.payload; // Ici le token est stocké
     },
     logout: (state) => {
-      state.token = null;
+      state.token = null;  // le token est supprimé ici lors de la deconnexion
     },
   },
 });

@@ -1,10 +1,11 @@
 // userAction.jsx
+// Contient deux fonctions asynchrones qui sont des actions Redux qui interagissent avec l'API pour gérer le profil de l'utilisateur
 
 import { setUser, setAuthenticated } from '../reducers/userReducer.jsx';
 
 const API_ENDPOINT = 'http://localhost:3001/api/v1/user/profile';
 
-// Fonction asynchrone pour récupérer le profil de l'utilisateur depuis l'API.
+// Fonction asynchrone pour récupérer le profil de l'utilisateur depuis l'API., pour le 1er formulaire
 export const fetchUserProfile = (token) => async (dispatch) => {
   try {
    if (!token) {
@@ -47,7 +48,7 @@ export const fetchUserProfile = (token) => async (dispatch) => {
   }
 };
 
-// Ajout de la nouvelle fonction updateUserProfile
+// Ajout de la nouvelle fonction updateUserProfile, c est pour modifier le pseudo
 export const updateUserProfile = (userData, token) => async (dispatch) => {
   try {
     if (!token) {

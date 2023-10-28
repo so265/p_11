@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateUserProfile } from '../action/userAction.jsx';
 import "../styleComponents/FormEditUser.scss"; 
 
-function FormEditUser({ toggleEditForm }) { // je recupere ce props toggleEditForm du composant welcomeBack
-  const user = useSelector(state => state.user);
+function FormEditUser({ toggleEditForm }) { // je recupere ce props toggleEditForm du composant welcomeBack pour cacher le form si clic save ou cancel
+  const user = useSelector(state => state.user); // L'état initial de user est utilisé pour pré-remplir le formulaire d'édition des informations de l'utilisateur et pour afficher les détails de l'utilisateur
   const [userName, setUserName] = useState(user.userName);
   const [firstName] = useState(user.firstName);
   const [lastName] = useState(user.lastName);
