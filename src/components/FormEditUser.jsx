@@ -38,8 +38,7 @@ function FormEditUser({ toggleEditForm }) { // je recupere ce props toggleEditFo
     }
   };
   
-
-  const handleCancel = () => {
+ const handleCancel = () => {
     setUserName(user.userName);
     setSuccessMessage(null);
     setErrorMessage(null);
