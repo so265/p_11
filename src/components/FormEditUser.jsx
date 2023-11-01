@@ -19,15 +19,25 @@ function FormEditUser({ toggleEditForm }) { // je recupere ce props toggleEditFo
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await dispatch(updateUserProfile({ userName }, token));
-      setSuccessMessage("User information updated successfully!");
-      setErrorMessage(null); // Efface le message d'erreur en cas de succès
-      toggleEditForm(); // Je cache le formulaire apres une mise a jour reussie 
+      // Tentative de mise à jour du profil utilisateur avec le nouveau pseudo (userName)
+      const updatedUser = await dispatch(updateUserProfile({ userName }, token));
+      if (updatedUser) {
+        // Affichage du message de succès
+        setSuccessMessage("Profil mis à jour !");
+        // Réinitialisation du message d'erreur
+        setErrorMessage(null);
+        // Délai avant de fermer le formulaire pour permettre à l'utilisateur de lire le message de succès
+        setTimeout(() => {
+          toggleEditForm(); // Appel de la fonction pour fermer le formulaire après un délai
+        }, 3000); // Délai de 3 secondes avant la fermeture automatique du formulaire
+      }
     } catch (error) {
-      setSuccessMessage(null); // Efface le message de succès en cas d'erreur
-      setErrorMessage("Erreur lors de la mise à jour des informations de l'utilisateur. Veuillez réessayer."); // Défini le message d'erreur
+      // En cas d'échec de la mise à jour, le message de succès est effacé et un message d'erreur est affiché
+      setSuccessMessage(null);
+      setErrorMessage("Erreur lors de la mise à jour des informations de l'utilisateur. Veuillez réessayer.");
     }
   };
+  
 
   const handleCancel = () => {
     setUserName(user.userName);
