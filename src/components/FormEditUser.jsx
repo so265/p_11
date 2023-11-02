@@ -19,7 +19,6 @@ function FormEditUser({ toggleEditForm }) { // je recupere ce props toggleEditFo
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
     if (!userName.trim() || userName.trim().length < 3) {
       setErrorMessage("Le nom d'utilisateur doit contenir au moins 3 caractères.");
       return; // Arrête l'exécution si la validation échoue

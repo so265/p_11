@@ -47,8 +47,6 @@ function Formulaire() {
         // Récupère les données de profil de l'utilisateur depuis l'API
         const userProfileData = await dispatch(fetchUserProfile(token));
 
-        console.log('User profile data:', userProfileData);
-
         // Vérifie si les données de profil sont valides
         if (userProfileData && userProfileData.body) {
           const { firstName, lastName, email } = userProfileData.body;

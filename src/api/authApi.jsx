@@ -30,9 +30,6 @@ export async function loginToAPI(formData) {
       // Conversion de la réponse en JSON
       const responseData = await response.json();
 
-      // Affichage de la réponse de l'API dans la console pour le débogage
-      console.log('Réponse de l\'API :', responseData);
-
       // Retour de la réponse de l'API
       return responseData;
 
