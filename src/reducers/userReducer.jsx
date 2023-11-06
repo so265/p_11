@@ -15,17 +15,17 @@ const userSlice = createSlice({
   },
   reducers: {
     setUser: (state, action) => {
-      state.firstName = action.payload.firstName;
-      state.lastName = action.payload.lastName;
+      state.firstName = action.payload.firstName; // state représente l'état actuel du slice user avant que l'action ne soit appliquée
+      state.lastName = action.payload.lastName; // payload contient les données que je veux utiliser pour mettre à jour l'état.
       state.userName = action.payload.userName;
       state.email = action.payload.email;
     },
     setAuthenticated: (state, action) => {
-      state.isAuthenticated = action.payload;
+      state.isAuthenticated = action.payload; // valeur true ou false
     },
   },
 });
 
 export const { setUser, setAuthenticated } = userSlice.actions;
-export default userSlice.reducer;
+export default userSlice.reducer; // j'exporte le reducer pour l'importer ds le store
 

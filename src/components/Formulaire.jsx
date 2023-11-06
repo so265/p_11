@@ -81,6 +81,7 @@ function Formulaire() {
             <input
               type="text"
               id="email"
+              name='email'
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               autoComplete="new-password"
@@ -91,6 +92,7 @@ function Formulaire() {
             <input
               type="password"
               id="password"
+              name='password'
               value={formData.password}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               autoComplete="current-password"

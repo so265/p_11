@@ -65,25 +65,30 @@ function FormEditUser({ toggleEditForm }) { // je recupere ce props toggleEditFo
             <div className="error-message">{errorMessage}</div>
           )}
           <div className="form-group">
-            <label>Username:</label>
+            <label htmlFor="userName">Username:</label>
             <input
               type="text"
+              id='userName'
+              name='userName'
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
+              autoComplete="username"
             />
           </div>
           <div className="form-group">
-            <label>First Name:</label>
+            <label htmlFor="firstName">First Name:</label>
             <input
               type="text"
+              id='firstName'
               value={firstName}
               readOnly
             />
           </div>
           <div className="form-group">
-            <label>Last Name:</label>
+            <label htmlFor="lastName">Last Name:</label>
             <input
               type="text"
+              id='lastName'
               value={lastName}
               readOnly
             />
