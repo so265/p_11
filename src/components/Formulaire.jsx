@@ -48,8 +48,8 @@ function Formulaire() {
         const userProfileData = await dispatch(fetchUserProfile(token));
 
         // Vérifie si les données de profil sont valides
-        if (userProfileData && userProfileData.body) {
-          const { firstName, lastName, email } = userProfileData.body;
+        if (userProfileData && userProfileData.body) { //je vérifie que userProfileData existe et qu'il a une propriété body
+          const { firstName, lastName, email } = userProfileData.body; // destructuration, j' extraies les propriétés firstName, lastName, et email de userProfileData.body
           const userName = `${firstName} ${lastName}`;  // Création du nom complet de l'utilisateur.
 
           dispatch(setUser({ name: userName, email })); // Mise à jour des données de l'utilisateur dans le store Redux.
