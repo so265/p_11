@@ -40,7 +40,7 @@ function Formulaire() {
       const response = await loginToAPI(formData);
 
       if (response.status === 200 && response.body) { // Vérifie la réponse de l'API.
-        const { token } = response.body;
+        const { token } = response.body; // Je déstructure l'objet response.body pour extraire la propriété token. Cela crée une nouvelle variable nommée token qui contient la valeur de response.body.token
 
         dispatch(updateToken(token));  // Mise à jour du token dans le store Redux.
 
