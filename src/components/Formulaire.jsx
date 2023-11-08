@@ -56,7 +56,7 @@ function Formulaire() {
         }
 
         dispatch(setAuthenticated(true));  // Définit l'authentification comme réussie dans le store Redux.
-        navigate('/user', { token }); // Redirige l'utilisateur vers la page "/user".
+        navigate('/user'); // Redirige l'utilisateur vers la page "/user".
       } else {
         throw new Error("Invalid API response");
       }
