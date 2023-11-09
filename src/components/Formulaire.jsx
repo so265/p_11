@@ -52,7 +52,12 @@ function Formulaire() {
           const { firstName, lastName, email } = userProfileData.body; // destructuration, j' extraies les propriétés firstName, lastName, et email de userProfileData.body
           const userName = `${firstName} ${lastName}`;  // Création du nom complet de l'utilisateur.
 
-          dispatch(setUser({ name: userName, email })); // Mise à jour des données de l'utilisateur dans le store Redux.
+          dispatch(setUser({ // Mise à jour des données de l'utilisateur dans le store Redux.
+            firstName: firstName, 
+            lastName: lastName, 
+            userName: userName, 
+            email: email 
+          })); 
         }
 
         dispatch(setAuthenticated(true));  // Définit l'authentification comme réussie dans le store Redux.

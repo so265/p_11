@@ -5,6 +5,11 @@ import { setUser, setAuthenticated } from '../reducers/userReducer.jsx';
 
 const API_ENDPOINT = 'http://localhost:3001/api/v1/user/profile';
 
+// Fonction pour masquer l'email, montrant uniquement la première lettre et le domaine
+function maskEmail(email) {
+  return email.replace(/(^[^@])[^@]*@[^.]+\.(.+)/, "$1***@***.$2");
+}
+
 // Fonction asynchrone pour récupérer le profil de l'utilisateur depuis l'API., pour le 1er formulaire
 export const fetchUserProfile = (token) => async (dispatch) => {
   try {
@@ -29,11 +34,12 @@ export const fetchUserProfile = (token) => async (dispatch) => {
     }
 
     if (data.status === 200 && data.body) {
+      const maskedEmail = maskEmail(data.body.email);
       const userData = {
         firstName: data.body.firstName,
         lastName: data.body.lastName,
         userName: data.body.userName,
-        email: data.body.email,
+        email: maskedEmail,
       };
 
       dispatch(setUser(userData));
