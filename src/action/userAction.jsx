@@ -78,7 +78,15 @@ export const updateUserProfile = (userData, token) => async (dispatch) => {
     }
 
     if (data.status === 200 && data.body) {
-      dispatch(setUser(data.body));
+      // Je masque l'email après la mise à jour du nom d'utilisateur
+      const maskedEmail = maskEmail(data.body.email);
+
+      const updatedUserData = {
+        ...data.body,
+        email: maskedEmail,
+      };
+
+      dispatch(setUser(updatedUserData));
       return data.body;
     }
 
