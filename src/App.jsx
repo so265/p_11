@@ -10,13 +10,13 @@ import ProtectedRoute from './ProtectedRoute.jsx';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter> {/*permet la navigation entre les pages*/}
       <div>
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/user" element={<ProtectedRoute component={User} />} />
+          <Route path="/user" element={<ProtectedRoute component={User} />} /> {/*protégée par ProtectedRoute, il faut etre connecté pour y acceder*/}
         </Routes>
       </div>
       <Footer />

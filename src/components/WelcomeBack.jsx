@@ -21,7 +21,7 @@ function WelcomeBack() {
           <div className="header">
             <h1 className='title'>Welcome back<br />{`${user.firstName} ${user.lastName}`}!</h1>
             {/* Je lie la fonction toggleEditForm au bouton "Edit Name" pour afficher ou cacher le formulaire */}
-            <button className="edit-button" onClick={toggleEditForm}>
+            <button className="edit-button" onClick={toggleEditForm}> {/*Je passe la fonction toggleEditForm en tant que props */}
               Edit Name
             </button>
           </div>
